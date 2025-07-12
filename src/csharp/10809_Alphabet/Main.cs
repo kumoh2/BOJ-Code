@@ -4,11 +4,12 @@ class Program {
     static void Main(string[] args)
     {
         string s = Console.ReadLine().Trim();
-        Console.WriteLine(FindFirstAtoZ(s));
+        int[] first = FindFirstAtoZ(s);
+        Console.WriteLine(string.Join(' ', first));
     }
 
     /* 알파벳 A ~ Z 중 처음 등장하는 위치 */
-    static string FindFirstAtoZ(string s)
+    static int[] FindFirstAtoZ(string s)
     {
         var cnt = new int[26]; // A ~ Z 의 첫번째 등장 위치 저장 배열
 
@@ -20,9 +21,9 @@ class Program {
             if (cnt[s[i] - 'a'] == -1)
             {
                 cnt[s[i] - 'a'] = i; // 해당 알파벳의 첫번째 등장 위치 저장
-            }          
+            }
         }
 
-        return string.Join(" ", cnt);
+        return cnt;
     }
 }

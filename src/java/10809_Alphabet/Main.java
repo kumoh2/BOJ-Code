@@ -1,29 +1,32 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        String sprout =
-       "         ,r'\"7\n" +
-       "r`-_   ,'  ,/\n" +
-       " \\. \". L_r'\n" +
-       "   `~\\/\n" +
-       "      |\n" +
-       "      |\n" ;
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
+        int[] first = FindFirstAtoZ(s);
+        for (int i = 0; i < 26; i++) {
+            System.out.print(first[i] + " ");
+        }
+        scanner.close();
+    }
 
-       
+    static int[] FindFirstAtoZ(String s)
+    {
+        int[] cnt = new int[26]; // A ~ Z 의 첫번째 등장 위치 저장 배열
 
-       System.out.println(sprout);
+        for (int i = 0; i < cnt.length; i++)
+            cnt[i] = -1; // cnt 배열 초기화
+
+        for (int i = 0; i < s.length(); i++)
+        {
+            int idx = s.charAt(i) - 'a';
+            if (cnt[idx] == -1)
+            {
+                cnt[idx] = i; // 해당 알파벳의 첫번째 등장 위치 저장
+            }
+        }
+
+        return cnt;
     }
 }
-
-//          ,r'"7
-// r`-_   ,'  ,/
-//  \. ". L_r'
-//    `~\/
-//       |
-//       |
-
-//          ,r'"7
-// r`-_   ,'  ,/
-//  \. ". L_r'
-//    `~\/
-//       |
-//       |
